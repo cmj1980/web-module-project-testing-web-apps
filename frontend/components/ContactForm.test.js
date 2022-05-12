@@ -51,14 +51,19 @@ test('renders the contact form header', () => {
      const emailInput = screen.getByLabelText(/Email*/i);
      userEvent.type(emailInput,"foo");
 
-     const errorMessage = await screen.findAllByTestId("error");
-     expect(errorMessage).toHaveLength(1);
+   await waitFor(() => {
+       const errorMessage = screen.queryAllByTestId("error");
+       expect(errorMessage).toHaveLength(1);
+   });
 
  });
 
-// test('renders "email must be a valid email address" if an invalid email is entered', async () => {
+ test('renders "email must be a valid email address" if an invalid email is entered', async () => {
+     render(<ContactForm/>);
 
-// });
+     const emailInput = screen.getByLabelText
+
+});
 
 // test('renders "lastName is a required field" if an last name is not entered and the submit button is clicked', async () => {
 
